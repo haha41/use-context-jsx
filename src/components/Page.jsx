@@ -2,12 +2,21 @@ import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Content from "./Content";
-export default function Page({ isDark, toggleThema }) {
+import { useRecoilState } from "recoil";
+import { darkModeState } from "../atoms/DarkModeState";
+
+export default function Page() {
+  const [isDark, setIsDark] = useRecoilState(darkModeState);
+
+  const toggleTheme = () => {
+    setIsDark((prevDark) => !prevDark);
+  };
+
   return (
     <div className="page">
-      <Header isDark={isDark} />
-      <Content isDark={isDark} />
-      <Footer isDark={isDark} toggleThema={toggleThema}></Footer>
+      <Header />
+      <Content />
+      <Footer toggleTheme={toggleTheme} />
     </div>
   );
 }

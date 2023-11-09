@@ -1,5 +1,5 @@
 import React from "react";
-import { useThemeStore } from "../stores/useThemeStore";
+import useThemeStore from "../stores/useThemeStore";
 
 export default function Content() {
   const isDark = useThemeStore((state) => state.isDark);
